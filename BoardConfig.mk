@@ -59,8 +59,9 @@ TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 BOARD_KERNEL_PAGESIZE := 4096
 BOARD_KERNEL_BASE := 0x40000000
 #BOARD_KERNEL_CMDLINE := "androidboot.selinux=permissive"
-#BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/shbootimg.mk
-TARGET_PREBUILT_KERNEL := device/samsung/janice/prebuilt/zImage
+#this is needed to generate ramdisk.cpio and ramdisk-recovery.cpio which are later incorporated into ramdisk
+BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/shbootimg.mk
+#TARGET_PREBUILT_KERNEL := device/samsung/janice/prebuilt/zImage
 
 # Graphics
 USE_OPENGL_RENDERER := true
@@ -160,8 +161,8 @@ TARGET_ENABLE_NON_PIE_SUPPORT := true
 TARGET_OTA_ASSERT_DEVICE := janice,i9070,GT-I9070
 
 # Kernel
-#TARGET_KERNEL_SOURCE := kernel/samsung/u8500
-#TARGET_KERNEL_CONFIG := mk_release_noswp_defconfig
+TARGET_KERNEL_SOURCE := kernel/samsung/u8500
+TARGET_KERNEL_CONFIG := mk_release_noswp_defconfig
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/configs/bluetooth/include
